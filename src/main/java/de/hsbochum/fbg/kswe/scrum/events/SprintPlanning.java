@@ -1,8 +1,7 @@
-
 package de.hsbochum.fbg.kswe.scrum.events;
 
-import de.hsbochum.fbg.kswe.scrum.artifacts.NoBacklogItemsAvailableException;
 import de.hsbochum.fbg.kswe.scrum.artifacts.BacklogItem;
+import de.hsbochum.fbg.kswe.scrum.artifacts.NoBacklogItemsAvailableException;
 import de.hsbochum.fbg.kswe.scrum.artifacts.ProductBacklog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +30,7 @@ public class SprintPlanning implements Event {
             }
         }
     }
-    
+
     public void addBacklogItem(BacklogItem item) {
         this.items.add(item);
     }
@@ -42,7 +41,7 @@ public class SprintPlanning implements Event {
 
     @Override
     public Class<? extends Event> followingEventType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Sprint.class;
     }
 
 }
