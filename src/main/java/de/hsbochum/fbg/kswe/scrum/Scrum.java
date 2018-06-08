@@ -38,15 +38,16 @@ public class Scrum {
         }
         else {
             previousEvent = this.currentEvent;
-            /*
-             * TODO implement the assertion of the logical order. Throw an
-             * UnexpectedNextEventException if the order is not correct.
-             * Hints:
-             * 1. the method Class#isAssignableFrom() might be helpful
-             * 2. the Event class exposes a method followingEventType(), but it must
-             *    be implemented in the subclasses
-             */
-
+            
+            boolean b = previousEvent.followingEventType().isAssignableFrom(event.getClass());
+           
+            if (!b) {
+            	LOG.warn(b);
+            	UnexpectedNextEventException ex = new UnexpectedNextEventException("Wrong next event");
+            	throw ex;
+            }
+            
+            this.currentEvent = event;
         }
         
         event.init(previousEvent, productBacklog);
